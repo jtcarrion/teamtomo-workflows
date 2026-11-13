@@ -55,13 +55,27 @@ Set `reconstruction.warp_compatible: false` for TeamTomo's own conventions.
   (`alignment.flip_hand`); one defocus per tilt (no defocus gradient across tilted images).
 
 ## Install
+Recommended: [uv](https://docs.astral.sh/uv/) — it installs `requirements.txt` in seconds.
 ```bash
-git clone <this repository> && cd teamtomo-workflows
+git clone https://github.com/jtcarrion/teamtomo-workflows && cd teamtomo-workflows
+pip install uv                                    # or: curl -LsSf https://astral.sh/uv/install.sh | sh
+uv venv --python 3.12 && source .venv/bin/activate
+uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126   # CUDA PyTorch (both from one index)
+uv pip install -r requirements.txt
+```
+
+Without uv (same result, but slow: about 25 minutes, because pip clones the TeamTomo repository once for each of
+the 18 pinned TeamTomo packages, where uv clones it once):
+```bash
 python -m venv .venv && source .venv/bin/activate            # Python >= 3.11
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126   # CUDA PyTorch (both from one index)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 ```
+Either way, pick the PyTorch build that matches your GPU driver (`cu126` here; see https://pytorch.org).
+
 `requirements.txt` pins the TeamTomo packages to the commits these workflows were validated with;
 `torch-tilt-series` comes from a fork until teamtomo/teamtomo#159 (`from_warp_xml`) is merged.
+Tested from a clean environment: uv 4 s, pip 24 min for `requirements.txt`; both give the same packages, and both
+workflows run on EMPIAR-10499 series 00254 (XML → tomograms vs WarpTools: correlation 0.995).
 
 Contributing: `pip install pre-commit && pre-commit install` once — notebook outputs are then stripped on every commit.
