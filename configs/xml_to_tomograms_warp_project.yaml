@@ -1,0 +1,15 @@
+# Warp/M/MissAlignment XML -> tomograms, for every tilt series in a Warp project.
+# Change warp_project to your Warp project folder (the one containing warp_tiltseries/), then:
+#   python batch.py --config configs/xml_to_tomograms_warp_project.yaml
+workflow: xml_to_tomograms
+input:
+  warp_project: /path/to/your/warp_project
+  series: all                      # or a list, e.g. [TS_01, TS_02]
+output:
+  root: ../teamtomo_output         # relative to this file
+reconstruction:
+  pixel_spacing: 10.0              # tomogram voxel size, A
+  thickness_angstrom: null         # null: the Warp project's Tomo Z (warp_tiltseries.settings)
+  warp_compatible: true            # same tomograms as WarpTools ts_reconstruct (corr 0.995)
+  ctf_and_dose: true               # uses the XML's defocus and dose
+  images: auto                     # Warp's full-size averages if present, else the tilt stack

@@ -1,0 +1,31 @@
+# Install CUDA PyTorch first (torch + torchvision from the same index), e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+# then: pip install -r requirements.txt
+# TeamTomo packages are pinned to the commits these workflows were validated with (teamtomo main 898351d).
+# torch-tilt-series and torch-cubic-spline-grids come from a fork (7d7b58d) until teamtomo/teamtomo#159 (from_warp_xml) is merged.
+teamtomo-basemodel @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/utils/teamtomo-basemodel
+torch-affine-utils @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-affine-utils
+torch-grid-utils @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-grid-utils
+torch-transform-image @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-transform-image
+torch-fourier-rescale @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-fourier-rescale
+torch-fourier-filter @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-fourier-filter
+torch-fourier-shift @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-fourier-shift
+torch-fourier-slice @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-fourier-slice
+torch-image-interpolation @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-image-interpolation
+torch-ctf @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-ctf
+torch-subpixel-crop @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-subpixel-crop
+torch-find-peaks @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/primitives/torch-find-peaks
+torch-tiltxcorr @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/algorithms/torch-tiltxcorr
+torch-refine-tilt-axis-angle @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/algorithms/torch-refine-tilt-axis-angle
+torch-ctf-estimation @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/algorithms/torch-ctf-estimation
+torch-reconstruct-tomogram @ git+https://github.com/teamtomo/teamtomo.git@898351d0718cd801af89659afa9f26311507df54#subdirectory=packages/algorithms/torch-reconstruct-tomogram
+torch-tilt-series @ git+https://github.com/jtcarrion/teamtomo.git@7d7b58db029fedbce31e5f6b70338f9eaad93d56#subdirectory=packages/primitives/torch-tilt-series
+torch-cubic-spline-grids @ git+https://github.com/jtcarrion/teamtomo.git@7d7b58db029fedbce31e5f6b70338f9eaad93d56#subdirectory=packages/primitives/torch-cubic-spline-grids
+warpxmlfile
+starfile
+mrcfile
+pyyaml
+numpy
+scipy
+matplotlib
+ipykernel

@@ -1,0 +1,20 @@
+# Tilt-series alignment (TeamTomo) -> CTF -> tomograms, for every tilt series in a Warp project.
+# The XML's alignment is NOT used (only its metadata, and as a template for the XML written back).
+# Change warp_project to your Warp project folder, then:
+#   python batch.py --config configs/tsa_to_tomograms_warp_project.yaml
+workflow: tsa_to_tomograms
+input:
+  warp_project: /path/to/your/warp_project
+  series: all
+output:
+  root: ../teamtomo_output
+alignment:
+  pixel_spacing: 10.0              # coarse alignment at 10 A, projection matching at 20 A
+  axis_prior: null                 # null: blind search; "tomostar": Warp's prior; or a number (deg)
+  thickness_angstrom: null         # null: specimen slab chosen from the data
+  write_warp_xml: true             # <series>/<series>.xml -> back into WarpTools
+ctf:
+  enabled: auto                    # when Warp's full-size averages are there
+reconstruction:
+  pixel_spacing: 10.0
+  warp_compatible: true

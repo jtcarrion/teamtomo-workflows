@@ -1,0 +1,6 @@
+# Keeps notebook outputs (figures, numbers) out of git: `pip install pre-commit && pre-commit install` once.
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+      - id: nbstripout
