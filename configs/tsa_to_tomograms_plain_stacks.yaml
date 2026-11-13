@@ -1,0 +1,16 @@
+# Tilt-series alignment -> tomograms from plain tilt stacks (no Warp project): <name>.st + <name>.rawtlt (or .tlt).
+# Change stacks to a glob of your stacks, then:
+#   python batch.py --config configs/tsa_to_tomograms_plain_stacks.yaml
+workflow: tsa_to_tomograms
+input:
+  stacks: /path/to/your/stacks/*.st   # glob or list
+  tilt_angles: null                # null: <stack>.rawtlt, then <stack>.tlt; or e.g. "/angles/{name}.tlt"
+  pixel_spacing: null              # null: MRC header
+output:
+  root: ../teamtomo_output
+alignment:
+  pixel_spacing: 10.0
+reconstruction:
+  pixel_spacing: 10.0
+  thickness_angstrom: 3400         # no Warp project to take it from (null: 1.5 x the specimen slab found)
+  warp_compatible: true            # geometry + preprocessing + sampling weights; CTF/dose skipped (unknown here)

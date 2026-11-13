@@ -1,0 +1,13 @@
+# results and data never go in git
+teamtomo_output/
+teamtomo_output*/
+*.mrc
+*.st
+*.mrcs
+*.html
+# python / jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
